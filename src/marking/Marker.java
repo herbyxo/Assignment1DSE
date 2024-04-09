@@ -4,95 +4,6 @@ import students.Farm;
 import students.Field;
 import students.items.*;
 
-public class Item {
-	
-	int age = 0, maturatation_age, death_age;
-	double monetary_value;
-	
-	public Item(maturation, death, monetary) {
-		
-		this.maturatation_age = maturation;
-		this.death_age = death;
-		this.monetary_value = monetary;
-		
-	}
-	
-	public void tick() {
-		
-		age++;
-		
-	}
-	
-	public void setAge(int) {
-		
-		this.age = int;
-		
-	}
-	
-	public boolean died() {
-		
-		if (this.age > this.death_age) {
-			return true
-		} else {
-			return false
-		}
-	}
-		
-		
-	public double getValue() {
-		
-		if (this.age > this.maturatation_age) {
-			
-			return this.monetary_value
-			
-		}
-		
-	}
-	
-	public boolean equals(Item object) {
-
-		if (this.age == object.age && this.maturation_age == maturation_age && this.death_age == death_age && this.monetary_value == monetary_value) {
-			
-			return true
-			
-			)
-		}else {
-			
-			return false
-			// confused on this
-		}
-		
-	}
-	
-	public String toString() {
-		
-		//and this
-		
-	}
-	
-	public class Food{
-		
-		
-		public class Grain {
-			
-			Food grain;
-			
-			int maturation_age = 2, death_age = 6, monetary_value = 2;
-			
-			public int getGenerationCount() {
-				
-				
-				
-				
-			}
-			
-		}
-		
-	}
-	
-	
-	
-}
 
 public class Marker {
 
@@ -125,7 +36,7 @@ public class Marker {
 		// Section TWO
 		// uncomment this section once you get to it
 		
-		/*
+		
 		Field testField = new Field(5, 5);
 		System.out.println(testField.get(3, 3)); //should print "."
 		System.out.println(testField); //should print the field
@@ -138,7 +49,7 @@ public class Marker {
 		testField.till(0, 0);
 		System.out.println(a.equals(testField.get(0, 0))); //should print false
 		System.out.println(testField.get(0, 0).equals(new Soil())); //should print true
-		*/
+		
 
 		// Section THREE
 		// uncomment this section once you get to it
