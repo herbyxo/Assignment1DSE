@@ -142,6 +142,8 @@ public class Field {
 		System.out.printf("%-20s %20.2f %n","Untilled:", untilled);
 		System.out.printf("%-20s %20.2f %n","Weed:", weed);
 		System.out.printf("%-20s %20.2f %n","For a total of $", getValue());;
+		System.out.printf("%-20s %20.2f %n","Total apples created:", apples);
+		System.out.printf("%-20s %20.2f %n","Total grain created:", grain);;
 		
 		
 		
