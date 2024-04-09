@@ -112,7 +112,7 @@ public class Field {
 	}
 	
 	
-	public void getSummary() {
+	public String getSummary() {
 		
 		int soil = 0, grain = 0, apples = 0, untilled = 0, weed = 0;	
 			
@@ -136,15 +136,17 @@ public class Field {
 				}
 				
 		
-		System.out.printf("%-20s %20s %n","Apples:", apples);
-		System.out.printf("%-20s %20.2f %n","Grain:", grain);
-		System.out.printf("%-20s %20.2f %n","Soil:", soil);
-		System.out.printf("%-20s %20.2f %n","Untilled:", untilled);
-		System.out.printf("%-20s %20.2f %n","Weed:", weed);
-		System.out.printf("%-20s %20.2f %n","For a total of $", getValue());;
-		System.out.printf("%-20s %20.2f %n","Total apples created:", apples);
-		System.out.printf("%-20s %20.2f %n","Total grain created:", grain);;
-		
+		int totalValue = getValue();
+        String summary = "Apples:        " + apples + "\n";
+        summary += "Grain:         " + grain + "\n";
+        summary += "Soil:          " + soil + "\n";
+        summary += "Untilled:      " + untilled + "\n";
+        summary += "Weed:          " + weed + "\n";
+        summary += "For a total of $" + totalValue + "\n";
+        summary += "Total apples created: " + apples + "\n";
+        summary += "Total grain created: " + grain + "\n";
+        
+        return summary;
 		
 		
 		
