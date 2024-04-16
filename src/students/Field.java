@@ -1,5 +1,6 @@
 package students;
 import students.items.*;
+import students.Weather;
 import java.util.Random;
 
 
@@ -8,6 +9,7 @@ public class Field {
 	// initialise variables and array
 	int height, width;
 	Item[][] field;
+	Weather weather = new Weather();
 	
 	// constructor, fills array based on height and width inputs
 	public Field(int height, int width){
@@ -29,6 +31,7 @@ public class Field {
 	
 	// tick method, uses for loops to age each plot of land in the field
 	public void tick() {
+		
 		
 		for (int i = 0; i < height; i++) {
 			

@@ -1,6 +1,7 @@
 package students;
 import students.items.*;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Farm {
 	
@@ -8,6 +9,9 @@ public class Farm {
     int startingFunds;
     int bankBalance;
     Field field;
+    // new functionality
+    private String[] weather = {"Sunny", "Rainy", "Cloudy", "Stormy"};
+
 
     
     // constructor method
@@ -54,6 +58,7 @@ public class Farm {
                     break;
                 case 'w':
                     field.tick();
+                    System.out.println("Current weather: " + generateWeather());
                     break;
                 case 'q':
                     break;
@@ -66,8 +71,12 @@ public class Farm {
     }
 
     // method for checking what the x and y co-ordinates are. till method
-    private void till(String action) {
-        try {
+    public void till(String action) {
+        if (generateWeather() == "Stormy") {
+        	System.out.println("Too Stormy to till!");
+        }
+        else {
+    	try {
             String[] parts = action.split(" ");
             int x = Integer.parseInt(parts[1]) - 1;
             int y = Integer.parseInt(parts[2]) - 1;
@@ -75,10 +84,10 @@ public class Farm {
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             System.out.println("Invalid input. Please enter valid coordinates.");
         }
-    }
+    }}
 
     // method for checking x and y co-ordinates. harvest method
-    private void harvest(String action) {
+    public void harvest(String action) {
         try {
             String[] parts = action.split(" ");
             int x = Integer.parseInt(parts[1]) - 1;
@@ -97,7 +106,7 @@ public class Farm {
     }
 
     //  method for checking x and y coordinates. plant method
-    private void plant(String action) {
+    public void plant(String action) {
         try {
             String[] parts = action.split(" ");
             int x = Integer.parseInt(parts[1]) - 1;
@@ -141,5 +150,14 @@ public class Farm {
             System.out.println("Invalid input. Please enter valid coordinates.");
         }
     }
+    
+    // outputs value from weather list randomly
+    public String generateWeather() {
+        Random rand = new Random();
+        int index = rand.nextInt(weather.length);
+        return weather[index];
+    }
+    
+    
 
 }
