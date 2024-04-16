@@ -3,20 +3,27 @@ import students.items.*;
 import java.util.Scanner;
 
 public class Farm {
+	
+	// initialise variables
     int startingFunds;
     int bankBalance;
     Field field;
 
+    
+    // constructor method
     public Farm(int fieldWidth, int fieldHeight, int startingFunds) {
         this.startingFunds = startingFunds;
         this.bankBalance = startingFunds;
         this.field = new Field(fieldHeight, fieldWidth);
     }
 
+    // run function, runs the game
     public void run() {
+    	// scanner for input
         Scanner scanner = new Scanner(System.in);
         String action = "";
-
+        
+        // while loop, outputs balance and user options
         while (!action.equals("q")) {
             System.out.println(field);
             System.out.println("Bank balance: $" + bankBalance);
@@ -28,8 +35,10 @@ public class Farm {
             System.out.println("  w: wait");
             System.out.println("  q: quit");
 
+            // user input
             action = scanner.nextLine();
 
+            // switch that checks the character and does action based on it
             switch (action.charAt(0)) {
                 case 't':
                     till(action);
@@ -56,6 +65,7 @@ public class Farm {
         System.out.println("Game ended. Final bank balance: $" + bankBalance);
     }
 
+    // method for checking what the x and y co-ordinates are. till method
     private void till(String action) {
         try {
             String[] parts = action.split(" ");
@@ -67,12 +77,14 @@ public class Farm {
         }
     }
 
+    // method for checking x and y co-ordinates. harvest method
     private void harvest(String action) {
         try {
             String[] parts = action.split(" ");
             int x = Integer.parseInt(parts[1]) - 1;
             int y = Integer.parseInt(parts[2]) - 1;
             Item item = field.get(x, y);
+            // if item is Food, harvests it and adds value to money. turns item to Soil
             if (item instanceof Food) {
                 bankBalance += item.getValue();
                 field.plant(x, y, new Soil());
@@ -84,17 +96,19 @@ public class Farm {
         }
     }
 
+    //  method for checking x and y coordinates. plant method
     private void plant(String action) {
         try {
             String[] parts = action.split(" ");
             int x = Integer.parseInt(parts[1]) - 1;
             int y = Integer.parseInt(parts[2]) - 1;
+            // user input for what user wants to plant
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter:");
             System.out.println(" - 'a' to buy an apple for $1");
             System.out.println(" - 'g' to buy grain for $2");
-
             String choice = scanner.nextLine();
+            // if statements based on input
             Item newItem = null;
             if (choice.equals("a")) {
                 if (bankBalance >= 1) {
@@ -116,7 +130,8 @@ public class Farm {
                 System.out.println("Invalid choice.");
                 return;
             }
-
+            
+            // if field[x][y] is Soil, then plants the item, else does not
             if (field.get(x, y) instanceof Soil) {
                 field.plant(x, y, newItem);
             } else {

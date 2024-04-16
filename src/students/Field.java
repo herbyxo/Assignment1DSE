@@ -5,10 +5,11 @@ import java.util.Random;
 
 public class Field {
 	
-	
+	// initialise variables and array
 	int height, width;
 	Item[][] field;
 	
+	// constructor, fills array based on height and width inputs
 	public Field(int height, int width){
 		
 		this.height = height;
@@ -26,6 +27,7 @@ public class Field {
 		}
 	}
 	
+	// tick method, uses for loops to age each plot of land in the field
 	public void tick() {
 		
 		for (int i = 0; i < height; i++) {
@@ -34,6 +36,7 @@ public class Field {
 		
 				field[i][j].tick();
 				
+				// if field[x][y] is Soil, then there is a 20 percent chance it can become a weed
 				if (field[i][j] instanceof Soil) {
 					Random rand = new Random();
 					int num = rand.nextInt(100);
@@ -43,6 +46,7 @@ public class Field {
 					
 				}
 				
+				// if field[x][y] has died, it becomes untilledsoil
 				if (field[i][j].died()) {
 					
 					field[i][j] = new UntilledSoil();
@@ -53,17 +57,18 @@ public class Field {
 		}	
 	}
 	
+	// toString method
 	public String toString() {
         StringBuilder sb = new StringBuilder();
         
-        // Header row
+        // header row
         sb.append("  ");
         for (int j = 0; j < width; j++) {
             sb.append(j + 1).append(" ");
         }
         sb.append("\n");
         
-        // Content rows
+        // content rows
         for (int i = 0; i < height; i++) {
             sb.append(i + 1).append(" ");
             for (int j = 0; j < width; j++) {
@@ -75,19 +80,21 @@ public class Field {
         return sb.toString();
     }
     
-	
+	// till method, fills x and y with soil
 	public void till(int x, int y) {
 		
 		field[x][y] = new Soil();
 		
 	}
 	
+	// gets Item at x and y
 	public Item get(int x, int y) {
 		
 		return field[x][y];
 		
 	}
 	
+	// plants Item at x and y
 	public void plant(int x, int y, Item item) {
 		
 		field[x][y] = item;
@@ -95,6 +102,7 @@ public class Field {
 	}
 	
 	
+	// returns value of all items in the field summed up
 	public int getValue() {
 		
 		int value = 0;
@@ -111,7 +119,7 @@ public class Field {
 		return value;
 	}
 	
-	
+	// returns a summary of number of each item, and value
 	public String getSummary() {
 		
 		int soil = 0, grain = 0, apples = 0, untilled = 0, weed = 0;	
