@@ -57,8 +57,8 @@ public class Farm {
                     System.out.println(field.getSummary());
                     break;
                 case 'w':
+                	System.out.println("Current weather: " + generateWeather());
                     field.tick();
-                    System.out.println("Current weather: " + generateWeather());
                     break;
                 case 'q':
                     break;
@@ -88,6 +88,10 @@ public class Farm {
 
     // method for checking x and y co-ordinates. harvest method
     public void harvest(String action) {
+    	if (generateWeather() == "Stormy") {
+        	System.out.println("Too Stormy to till!");
+        }
+        else {
         try {
             String[] parts = action.split(" ");
             int x = Integer.parseInt(parts[1]) - 1;
@@ -103,10 +107,15 @@ public class Farm {
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             System.out.println("Invalid input. Please enter valid coordinates.");
         }
+      }
     }
 
     //  method for checking x and y coordinates. plant method
     public void plant(String action) {
+    	if (generateWeather() == "Stormy") {
+        	System.out.println("Too Stormy to till!");
+        }
+        else {
         try {
             String[] parts = action.split(" ");
             int x = Integer.parseInt(parts[1]) - 1;
@@ -149,6 +158,7 @@ public class Farm {
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             System.out.println("Invalid input. Please enter valid coordinates.");
         }
+    }
     }
     
     // outputs value from weather list randomly

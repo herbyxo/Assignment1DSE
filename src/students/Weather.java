@@ -11,28 +11,6 @@ public class Weather {
         int index = rand.nextInt(weather.length);
         return weather[index];
     }
-	
-	void weather_conditions() {
-		
-		if (generateWeather() == "Sunny") {
-			
-			
-			
-		}
-	}
-	
 
-
-public static void main(String[] args) {
-	// TODO Auto-generated method stub
-
-	Weather weather = new Weather();
-	
-	System.out.println(weather.generateWeather());
-	
-	
-	
-
-}
 
 }

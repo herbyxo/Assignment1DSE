@@ -32,10 +32,14 @@ public class Field {
 	// tick method, uses for loops to age each plot of land in the field
 	public void tick() {
 		
+		// if weather is cloudy, nothing can grow
 		if (weather.generateWeather() == "Cloudy") {
-			System.out.println("Too foggy for anything to grow");
+			System.out.println("Too Cloudy for anything to grow...");
 		} else if (weather.generateWeather() == "Rainy" ){
 			
+			// if weather is rainy, things grow twice as fast
+			System.out.println("Double growing rate!");
+			for (int r = 0; r < 2; r++) {
 			for (int i = 0; i < height; i++) {
 				
 				for (int j = 0; j < width; j++) {
@@ -61,6 +65,7 @@ public class Field {
 					
 				}
 			}	
+			}
 		} else {
 			
 			for (int i = 0; i < height; i++) {
