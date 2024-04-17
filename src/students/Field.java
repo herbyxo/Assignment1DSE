@@ -32,32 +32,63 @@ public class Field {
 	// tick method, uses for loops to age each plot of land in the field
 	public void tick() {
 		
-		
-		for (int i = 0; i < height; i++) {
+		if (weather.generateWeather() == "Cloudy") {
+			System.out.println("Too foggy for anything to grow");
+		} else if (weather.generateWeather() == "Rainy" ){
 			
-			for (int j = 0; j < width; j++) {
-		
-				field[i][j].tick();
+			for (int i = 0; i < height; i++) {
 				
-				// if field[x][y] is Soil, then there is a 20 percent chance it can become a weed
-				if (field[i][j] instanceof Soil) {
-					Random rand = new Random();
-					int num = rand.nextInt(100);
-					if (num < 20) {
-						field[i][j] = new Weed();
+				for (int j = 0; j < width; j++) {
+			
+					field[i][j].tick();
+					
+					// if field[x][y] is Soil, then there is a 20 percent chance it can become a weed
+					if (field[i][j] instanceof Soil) {
+						Random rand = new Random();
+						int num = rand.nextInt(100);
+						if (num < 20) {
+							field[i][j] = new Weed();
+						}
+						
+					}
+					
+					// if field[x][y] has died, it becomes untilledsoil
+					if (field[i][j].died()) {
+						
+						field[i][j] = new UntilledSoil();
+						
 					}
 					
 				}
+			}	
+		} else {
+			
+			for (int i = 0; i < height; i++) {
 				
-				// if field[x][y] has died, it becomes untilledsoil
-				if (field[i][j].died()) {
+				for (int j = 0; j < width; j++) {
+			
+					field[i][j].tick();
 					
-					field[i][j] = new UntilledSoil();
+					// if field[x][y] is Soil, then there is a 20 percent chance it can become a weed
+					if (field[i][j] instanceof Soil) {
+						Random rand = new Random();
+						int num = rand.nextInt(100);
+						if (num < 20) {
+							field[i][j] = new Weed();
+						}
+						
+					}
+					
+					// if field[x][y] has died, it becomes untilledsoil
+					if (field[i][j].died()) {
+						
+						field[i][j] = new UntilledSoil();
+						
+					}
 					
 				}
-				
 			}
-		}	
+		}
 	}
 	
 	// toString method

@@ -44,7 +44,7 @@ public class Farm {
 
             // switch that checks the character and does action based on it
             switch (action.charAt(0)) {
-                case 't':
+                case 't': 
                     till(action);
                     break;
                 case 'h':
